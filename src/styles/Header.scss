@@ -1,0 +1,14 @@
+.header {
+    &__padding {
+        padding-top: 18px;
+        padding-bottom: 22px;
+        width: 100%;
+    }
+    &__top-block {
+        display: flex;
+        width: 100%;
+    }
+    &__logo-link {
+        margin-right: auto;
+    }
+}

@@ -1,0 +1,30 @@
+@import 'mixins';
+@import 'variables';
+
+* {
+  font-family: 'Lexend';
+  color: #46494F;
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.block-normalizer {
+  max-width: 1300px;
+  width: 100%;
+  align-self: center;
+  display: flex;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+@include media-down($bp1) {
+  
+}

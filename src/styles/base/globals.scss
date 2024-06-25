@@ -2,8 +2,8 @@
 @import 'variables';
 
 * {
-  font-family: 'Lexend';
-  color: #46494F;
+  font-family: 'Inter';
+  color: #333333;
 }
 
 
@@ -23,6 +23,36 @@ body {
   padding-right: 10px;
   margin: 0 auto;
   flex: 1;
+}
+.text-button {
+  border: none;
+  background: var(--invisible-bg);
+  padding: 0;
+}
+.button {
+  border: none;
+  background: var(--invisible-bg);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  transition: all 0.5s;
+  font-weight: 600;
+}
+
+.text-gray {
+  color: var(--gray);
+}
+.red-button {
+  background: var(--red);
+  &:hover {
+    background: var(--dark-red);
+  }
+}
+.green-button {
+  background: var(--green);
+  &:hover {
+    background: var(--dark-green);
+  }
 }
 
 @include media-down($bp1) {

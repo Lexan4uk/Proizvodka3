@@ -1,14 +1,107 @@
 .header {
+    &_props {
+        position: relative;
+    }
+
     &__padding {
         padding-top: 18px;
-        padding-bottom: 22px;
         width: 100%;
     }
+
+    &__holder {
+        min-height: 111px;
+
+    }
+
     &__top-block {
         display: flex;
         width: 100%;
     }
+
     &__logo-link {
         margin-right: auto;
     }
+
+    &__actions {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+    }
+
+    &__search-block {
+        display: flex;
+        position: relative;
+    }
+
+    &__category-btn {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        gap: 8px;
+        border-radius: 20px 0px 0px 20px !important;
+    }
+
+    &__search-holder {
+        width: 380px;
+        border-radius: 0px 20px 20px 0px;
+        background: var(--gray-bg);
+        display: flex;
+        align-items: center;
+
+        &_img {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    &__search-field {
+        width: 100%;
+        background: var(--gray-bg);
+        margin-left: 20px;
+        margin-right: 20px;
+
+        border: none;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: var(--gray);
+        }
+
+        &_img {
+            float: right;
+        }
+    }
+
+
+    &__minimenu {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+    }
+
+    &__lang-button {
+        display: flex;
+        gap: 8px;
+        padding-right: 16px !important;
+        border-right: 2px solid #D0D0D0 !important;
+    }
+
+    &__minimenu-item {
+        height: fit-content;
+    }
+
+
+
+    &__bottom-block {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 15px;
+    }
+
+    &__bottom-block-link {}
 }

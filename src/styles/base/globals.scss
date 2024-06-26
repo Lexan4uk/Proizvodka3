@@ -38,6 +38,13 @@ body {
   transition: all 0.5s;
   font-weight: 600;
 }
+.default-image {
+  background: url("../../src/header/fish.svg");
+  object-fit: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
 
 .text-gray {
   color: var(--gray);
@@ -54,6 +61,35 @@ body {
     background: var(--dark-green);
   }
 }
+.weight-s {
+  font-weight: 300;
+}
+.weight-m {
+  font-weight: 400;
+}
+.weight-l {
+  font-weight: 500;
+}
+.weight-xl {
+  font-weight: 600;
+}
+
+.font-s {
+  font-size: 14px;
+}
+.font-m {
+  font-size: 16px;
+}
+.font-l {
+  font-size: 24px;
+}
+.font-xl {
+}
+$md: 480;
+$lg: 786;
+$xl: 1350;
+$xll: 1702;
+$xxl: 1920;
 
 @include media-down($bp1) {
   

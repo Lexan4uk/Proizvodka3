@@ -39,13 +39,15 @@ body {
   font-weight: 600;
 }
 .default-image {
-  background: url("../../src/header/fish.svg");
+  //background: url("@images/header/fish.svg");
   object-fit: cover;
   background-position: center;
   height: 100%;
   width: 100%;
 }
-
+.text-green {
+  color: var(--green);
+}
 .text-gray {
   color: var(--gray);
 }
@@ -81,9 +83,14 @@ body {
   font-size: 16px;
 }
 .font-l {
+  font-size: 18px;
+} 
+
+.font-xl {
   font-size: 24px;
 }
-.font-xl {
+.font-xxl {
+  font-size: 32px;
 }
 $md: 480;
 $lg: 786;

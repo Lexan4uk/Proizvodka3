@@ -1,0 +1,46 @@
+.advert-thumb {
+    &_props {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+    }
+    &__heart-holder {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        margin: 8px;
+        padding: 5px 7px;
+        border-radius: 100px;
+        background: var(--white);
+        opacity: 0.8;
+        transition: all 0.5s;
+        &:hover {
+            background: var(--green);
+            opacity: 1;
+        }
+    }
+    
+    &__img-holder {
+        max-width: 233px;
+        max-height: 204px;
+        display: flex;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+    }
+    &__img {
+        height: 100%;
+    }
+    &__text-holder {
+        display: flex;
+        flex-direction: column;
+        gap: 5px
+    }
+    &__advert-name {
+        margin-bottom: 3px;
+    }
+
+}

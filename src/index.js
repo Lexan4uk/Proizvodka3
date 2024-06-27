@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Main from './pages/Main';
+import Main from '@pages/Main';
 
 import reportWebVitals from './reportWebVitals';
-import './styles/base/fonts.scss';
-import './styles/base/globals.scss';
-import './styles/base/mixins.scss';
-import './styles/base/normalize.scss';
-import './styles/base/variables.scss';
+import '@globalStyles/fonts.scss';
+import '@globalStyles/globals.scss';
+import '@globalStyles/mixins.scss';
+import '@globalStyles/normalize.scss';
+import '@globalStyles/variables.scss';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

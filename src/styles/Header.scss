@@ -103,5 +103,28 @@
         padding-top: 15px;
     }
 
-    &__bottom-block-link {}
+    &__bottom-block-link {
+        transition: all 0.3s;
+
+        &:hover {
+            color: var(--green)
+        }
+    }
+    &__menu-animation-enter {
+        opacity: 0;
+    }
+
+    &__menu-animation-enter-active {
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    &__menu-animation-exit {
+        opacity: 1;
+    }
+
+    &__menu-animation-exit-active {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
 }

@@ -1,19 +1,21 @@
-import './../styles/Header.scss';
+import '@styles/Header.scss';
 import { useState } from 'react';
-import logo_img from './../src/header/logo.svg'
-import heart_img from './../src/header/heart.svg'
-import lang_img from './../src/header/lang.svg'
-import adress_img from './../src/header/location.svg'
-import mail_img from './../src/header/mail.svg'
-import user_img from './../src/header/user.svg'
-import category_img from './../src/header/category.svg'
-import search_img from './../src/header/search.svg'
-import cross_img from './../src/header/cross.svg'
+import logo_img from '@images/header/logo.svg'
+import heart_img from '@images/header/heart.svg'
+import lang_img from '@images/header/lang.svg'
+import adress_img from '@images/header/location.svg'
+import mail_img from '@images/header/mail.svg'
+import user_img from '@images/header/user.svg'
+import category_img from '@images/header/category.svg'
+import search_img from '@images/header/search.svg'
+import cross_img from '@images/header/cross.svg'
+import { CSSTransition } from 'react-transition-group';
 
 
-import { apiTags, getCategories } from './../api/categories';
+
+import { apiTags, getCategories } from '@api/categories';
 import useSWR from 'swr';
-import Menu from './Menu';
+import Menu from '@components/Menu';
 
 function Header() {
     const { data, error, isLoading } = useSWR(apiTags.advert_categories, () => getCategories());
@@ -67,14 +69,19 @@ function Header() {
                         </div>
                         <div className="header__bottom-block" style={{ display: isMenuOpen ? 'none' : 'flex' }}>
                             {data?.items.map(item => (
-                                <a class="header__bottom-block-link" key={item.id} href={'/' + item.tech_name}>{item.name}</a>
+                                <a className="header__bottom-block-link" key={item.id} href={'/' + item.tech_name}>{item.name}</a>
                             ))}
                         </div>
                     </div>
                 </div>
-                {isMenuOpen && (
+                <CSSTransition
+                    in={isMenuOpen}
+                    timeout={300}
+                    classNames="header__menu-animation"
+                    unmountOnExit
+                >
                     <Menu message={data?.items} />
-                )}
+                </CSSTransition>
             </header>
         </>
     );

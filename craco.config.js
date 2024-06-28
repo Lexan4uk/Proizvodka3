@@ -10,8 +10,8 @@ module.exports = {
             '@styles': resolvePath('./src/styles'),
             '@components': resolvePath('./src/components'),
             '@pages': resolvePath('./src/pages'),
-            '@globalStyles': resolvePath('./src/styles/base/')
-            
+            '@globalStyles': resolvePath('./src/styles/base/'),
+            '@scripts': resolvePath('./src/scripts')
         }
     },
 }

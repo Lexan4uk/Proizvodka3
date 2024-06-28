@@ -1,32 +1,40 @@
 import '@styles/Header.scss';
 import { useState } from 'react';
-import logo_img from '@images/header/logo.svg'
-import heart_img from '@images/header/heart.svg'
-import lang_img from '@images/header/lang.svg'
-import adress_img from '@images/header/location.svg'
-import mail_img from '@images/header/mail.svg'
-import user_img from '@images/header/user.svg'
-import category_img from '@images/header/category.svg'
-import search_img from '@images/header/search.svg'
-import cross_img from '@images/header/cross.svg'
+import useSWR from 'swr';
 import { CSSTransition } from 'react-transition-group';
 
-
+import logo_img from '@images/header/logo.svg';
+import heart_img from '@images/header/heart.svg';
+import lang_img from '@images/header/lang.svg';
+import adress_img from '@images/header/location.svg';
+import mail_img from '@images/header/mail.svg';
+import user_img from '@images/header/user.svg';
+import category_img from '@images/header/category.svg';
+import search_img from '@images/header/search.svg';
+import cross_img from '@images/header/cross.svg';
 
 import { apiTags, getCategories } from '@api/categories';
-import useSWR from 'swr';
 import Menu from '@components/Menu';
+//------------------------------------------------------------
+import PersonalArea from '@components/PersonalArea';
+import AuthHook from '@scripts/AuthHook'; // Путь к вашему кастомному хуку
+//------------------------------------------------------------
 
 function Header() {
-    const { data, error, isLoading } = useSWR(apiTags.advert_categories, () => getCategories());
+    const { data, error, isLoading } = useSWR(apiTags.advert_categories, getCategories);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
-
-
-
+    //----------------------------------------
+    const {
+        isPersonalAreaOpen,
+        //togglePersonalArea,
+        openPersonalArea,
+        closePersonalArea
+    } = AuthHook();
+    //-------------------------------------------
     return (
         <>
             <header className="header header_props">
@@ -43,8 +51,9 @@ function Header() {
                                         All category
                                     </button>
                                     <div className="header__search-holder">
-                                        <input type="text" className="header__search-field " placeholder="Search" />                        </div>
-                                    <img className="header__search-holder_img" src={search_img} alt="Search" />
+                                        <input type="text" className="header__search-field" placeholder="Search" />
+                                        <img className="header__search-holder_img" src={search_img} alt="Search" />
+                                    </div>
                                 </div>
                                 <div className="header__minimenu">
                                     <button className="header__lang-button text-button  header__minimenu-item">
@@ -64,7 +73,11 @@ function Header() {
                                         <img className="header__minimenu-img" src={user_img} alt="User" />
                                     </a>
                                 </div>
-                                <a href="/" className="button red-button header__make-add-btn">Post ad</a>
+                                {/* ------------------------------------------------------------------------------- */}
+                                <button className="button red-button header__make-add-btn" onClick={openPersonalArea}>
+                                    Post ad
+                                </button>
+                                {/* ------------------------------------------------------------------------------- */}
                             </div>
                         </div>
                         <div className="header__bottom-block" style={{ display: isMenuOpen ? 'none' : 'flex' }}>
@@ -82,6 +95,9 @@ function Header() {
                 >
                     <Menu message={data?.items} />
                 </CSSTransition>
+                {/* ------------------------------------------------------------------------------- */}
+                {isPersonalAreaOpen && <PersonalArea />}
+                {/* ------------------------------------------------------------------------------- */}
             </header>
         </>
     );

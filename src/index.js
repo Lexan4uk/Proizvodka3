@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import ReactDOM from 'react-dom/client';
 import Main from '@pages/Main';
 
@@ -8,12 +8,43 @@ import '@globalStyles/globals.scss';
 import '@globalStyles/mixins.scss';
 import '@globalStyles/normalize.scss';
 import '@globalStyles/variables.scss';
+import {RecoilRoot} from 'recoil';
+import useAuth from '@scripts/useAuth';
+import { useEffect } from 'react';
+import { isUserFetchingState } from '@scripts/authState';
+import { useRecoilState } from 'recoil';
 
+
+
+const App = (props) => {
+  const [isUserFetching, setIsUserFetching] = useRecoilState(isUserFetchingState);
+
+  const {
+    initUser,
+    isAuthorised
+  } = useAuth();
+
+  useEffect(() => {
+    if (!isUserFetching && !isAuthorised) {
+      setIsUserFetching(true)
+      initUser()
+      setIsUserFetching(false)
+    }
+  }, [isAuthorised, isUserFetching])
+
+
+
+  return props.children
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Main />
+    <RecoilRoot>
+      <App>
+        <Main />
+      </App>
+    </RecoilRoot>
   </React.StrictMode>
 );
 

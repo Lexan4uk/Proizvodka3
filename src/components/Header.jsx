@@ -15,10 +15,8 @@ import cross_img from '@images/header/cross.svg';
 
 import { apiTags, getCategories } from '@api/categories';
 import Menu from '@components/Menu';
-//------------------------------------------------------------
 import PersonalArea from '@components/PersonalArea';
-import AuthHook from '@scripts/AuthHook'; // Путь к вашему кастомному хуку
-//------------------------------------------------------------
+import useAuth from '@scripts/useAuth';
 
 function Header() {
     const { data, error, isLoading } = useSWR(apiTags.advert_categories, getCategories);
@@ -27,79 +25,74 @@ function Header() {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
-    //----------------------------------------
     const {
         isPersonalAreaOpen,
-        //togglePersonalArea,
         openPersonalArea,
-        closePersonalArea
-    } = AuthHook();
-    //-------------------------------------------
+        closePersonalArea,
+    } = useAuth();
     return (
-        <>
-            <header className="header header_props">
-                <div className="header__holder block-normalizer">
-                    <div className="header__holder header__padding">
-                        <div className="header__top-block">
-                            <a href="/" className="header__logo-link">
-                                <img className="header__button-img" src={logo_img} alt="Logo" />
-                            </a>
-                            <div className="header__actions">
-                                <div className="header__search-block">
-                                    <button className="header__category-btn button green-button" onClick={toggleMenu}>
-                                        <img className="header__category-img" src={isMenuOpen ? cross_img : category_img} alt="Category" />
-                                        All category
-                                    </button>
-                                    <div className="header__search-holder">
-                                        <input type="text" className="header__search-field" placeholder="Search" />
-                                        <img className="header__search-holder_img" src={search_img} alt="Search" />
-                                    </div>
-                                </div>
-                                <div className="header__minimenu">
-                                    <button className="header__lang-button text-button  header__minimenu-item">
-                                        <img className="header__minimenu-img" src={lang_img} alt="Language" />
-                                        Eng
-                                    </button>
-                                    <a href="/" className="header__minimenu-item">
-                                        <img className="header__minimenu-img" src={adress_img} alt="Adress" />
-                                    </a>
-                                    <a href="/" className="header__minimenu-item">
-                                        <img className="header__minimenu-img" src={heart_img} alt="Heart" />
-                                    </a>
-                                    <a href="/" className="header__minimenu-item">
-                                        <img className="header__minimenu-img" src={mail_img} alt="Mail" />
-                                    </a>
-                                    <a href="/" className="header__minimenu-item">
-                                        <img className="header__minimenu-img" src={user_img} alt="User" />
-                                    </a>
-                                </div>
-                                {/* ------------------------------------------------------------------------------- */}
-                                <button className="button red-button header__make-add-btn" onClick={openPersonalArea}>
-                                    Post ad
+        <header className="header header_props">
+            <div className="header__holder block-normalizer">
+                <div className="header__holder header__padding">
+                    <div className="header__top-block">
+                        <a href="/" className="header__logo-link">
+                            <img className="header__button-img" src={logo_img} alt="Logo" />
+                        </a>
+                        <div className="header__actions">
+                            <div className="header__search-block">
+                                <button className="header__category-btn button green-button" onClick={toggleMenu}>
+                                    <img className="header__category-img" src={isMenuOpen ? cross_img : category_img} alt="Category" />
+                                    All category
                                 </button>
-                                {/* ------------------------------------------------------------------------------- */}
+                                <div className="header__search-holder">
+                                    <input type="text" className="header__search-field" placeholder="Search" />
+                                    <img className="header__search-holder_img" src={search_img} alt="Search" />
+                                </div>
                             </div>
-                        </div>
-                        <div className="header__bottom-block" style={{ display: isMenuOpen ? 'none' : 'flex' }}>
-                            {data?.items.map(item => (
-                                <a className="header__bottom-block-link" key={item.id} href={'/' + item.tech_name}>{item.name}</a>
-                            ))}
+                            <div className="header__minimenu">
+                                <button className="header__lang-button text-button  header__minimenu-item">
+                                    <img className="header__minimenu-img" src={lang_img} alt="Language" />
+                                    Eng
+                                </button>
+                                <a href="/" className="header__minimenu-item">
+                                    <img className="header__minimenu-img" src={adress_img} alt="Adress" />
+                                </a>
+                                <a href="/" className="header__minimenu-item">
+                                    <img className="header__minimenu-img" src={heart_img} alt="Heart" />
+                                </a>
+                                <a href="/" className="header__minimenu-item">
+                                    <img className="header__minimenu-img" src={mail_img} alt="Mail" />
+                                </a>
+                                <a href="/" className="header__minimenu-item">
+                                    <img className="header__minimenu-img" src={user_img} alt="User" />
+                                </a>
+                            </div>
+                            {/* ------------------------------------------------------------------------------- */}
+                            <button className="button red-button header__make-add-btn" onClick={openPersonalArea}>
+                                Post ad
+                            </button>
+                            {/* ------------------------------------------------------------------------------- */}
                         </div>
                     </div>
+                    <div className="header__bottom-block" style={{ display: isMenuOpen ? 'none' : 'flex' }}>
+                        {data?.items.map(item => (
+                            <a className="header__bottom-block-link" key={item.id} href={'/' + item.tech_name}>{item.name}</a>
+                        ))}
+                    </div>
                 </div>
-                <CSSTransition
-                    in={isMenuOpen}
-                    timeout={300}
-                    classNames="header__menu-animation"
-                    unmountOnExit
-                >
-                    <Menu message={data?.items} />
-                </CSSTransition>
-                {/* ------------------------------------------------------------------------------- */}
-                {isPersonalAreaOpen && <PersonalArea />}
-                {/* ------------------------------------------------------------------------------- */}
-            </header>
-        </>
+            </div>
+            <CSSTransition
+                in={isMenuOpen}
+                timeout={300}
+                classNames="header__menu-animation"
+                unmountOnExit
+            >
+                <Menu message={data?.items} />
+            </CSSTransition>
+            {/* ------------------------------------------------------------------------------- */}
+            {isPersonalAreaOpen && <PersonalArea />}
+            {/* ------------------------------------------------------------------------------- */}
+        </header>
     );
 }
 

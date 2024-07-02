@@ -1,10 +1,13 @@
 .advert-thumb {
-    &_props {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+    &__props {
         position: relative;
     }
+
+    &_content-holder {
+        display: flex;
+        flex-direction: column;
+    }
+
     &__heart-holder {
         position: absolute;
         z-index: 1;
@@ -16,29 +19,49 @@
         background: var(--white);
         opacity: 0.8;
         transition: all 0.5s;
+        border: none;
         &:hover {
-            background: var(--green);
             opacity: 1;
         }
+        &_active {
+            opacity: 1;
+            background: var(--green);
+            .advert-thumb__heart-img {
+                fill: var(--white) !important;
+            }
+        }
     }
-    
+    &__heart-img {
+        &:hover {
+            fill: var(--green);
+        }
+    }
+
     &__img-holder {
         max-width: 233px;
         max-height: 204px;
+        height: 100%;
+        width: 100%;
         display: flex;
         overflow: hidden;
         justify-content: center;
         align-items: center;
+        position: relative;
         border-radius: 5px;
     }
+
     &__img {
         height: 100%;
+
     }
+
     &__text-holder {
         display: flex;
         flex-direction: column;
+        margin-top: 10px;
         gap: 5px
     }
+
     &__advert-name {
         margin-bottom: 3px;
     }

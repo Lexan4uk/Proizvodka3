@@ -6,8 +6,7 @@ export const api = create({
   headers: { Accept: "application/json" },
 })
 api.addRequestTransform(request => {
-  const token = localStorage.getItem('token');
-  
+  const token = localStorage.getItem('token', false);
   if (token) {
     request.headers['Authorization'] = `Bearer ${token}`
   } 

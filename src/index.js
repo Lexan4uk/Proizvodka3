@@ -47,7 +47,7 @@ root.render(
     </RecoilRoot>
   </React.StrictMode>
 );
-
+//ПОМЕНЯТЬ isAuthorised если авторизован, сохранить в данных данные аккаунта, опрокинуть вызов на кнопки
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

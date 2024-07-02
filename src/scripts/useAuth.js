@@ -14,6 +14,10 @@ function useAuth() {
     setIsPersonalAreaOpen(true);
   };
 
+  const closePersonalArea = () => {
+    setIsPersonalAreaOpen(false);
+  };
+
   const initUser = async () => {
     const token = localStorage.getItem('token');
       if (!isAuthorised && token) {
@@ -21,17 +25,15 @@ function useAuth() {
         setIsAuthorised(true)
       }
   }
-  
-  const closePersonalArea = () => {
-    setIsPersonalAreaOpen(false);
-  };
 
   return {
     isPersonalAreaOpen,
+    isAuthorised,
+    setIsAuthorised,
     openPersonalArea,
     closePersonalArea,
     initUser,
-    isAuthorised
+    
   };
 }
 

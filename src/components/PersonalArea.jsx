@@ -1,19 +1,30 @@
 import '@styles/PersonalArea.scss';
 import useAuth from '@scripts/useAuth';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import exit_img from '@images/auth/cross.svg';
 import Register from '@components/Register';
 import Login from '@components/Login';
 import ForgetPass from '@components/ForgetPass';
+import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
 
 
-function PersonalArea() {
+function PersonalArea({isShow}) {
     const {
         isPersonalAreaOpen,
-        openPersonalArea,
         closePersonalArea,
     } = useAuth();
+
+    const ref = useRef()
+
+    useEffect(()=>{
+        const modalRoot = document.getElementById('modal-root');
+        if(modalRoot){
+            ref.current = modalRoot
+        }
+    }, [isShow])
+
 
     const [currentComponent, setCurrentComponent] = useState('Login');
     const renderComponent = () => {
@@ -30,11 +41,11 @@ function PersonalArea() {
     }
 
 
-    return (
+    return isShow && ref.current ? createPortal(
         <>
             {
                 isPersonalAreaOpen && (
-                    <form action="#" className="personal-area personal-area_props">
+                    <form onSubmit={(e) => {e.preventDefault()}} action="#" className="personal-area personal-area_props">
                         <div className="personal-area__user-block">
                             <h2 className="personal-area__article font-xl weight-xl">Personal area</h2>
                             {renderComponent()}
@@ -46,8 +57,12 @@ function PersonalArea() {
                     </form>
                 )
             }
-        </>
-    );
+        </>, ref.current
+    ): <></>;
 }
+
+PersonalArea.propTypes = {
+    isShow: PropTypes.bool.isRequired
+};
 
 export default PersonalArea;

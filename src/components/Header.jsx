@@ -27,9 +27,19 @@ function Header() {
     };
     const {
         isPersonalAreaOpen,
+        isAuthorised,
         openPersonalArea,
-        closePersonalArea,
     } = useAuth();
+    const handleAdClick = () => {
+        if (isAuthorised) {
+            alert("Вы авторизированы. тут может быть действие кнопки");
+        } else {
+            openPersonalArea();
+        }
+    };
+
+
+
     return (
         <header className="header header_props">
             <div className="header__holder block-normalizer">
@@ -67,11 +77,9 @@ function Header() {
                                     <img className="header__minimenu-img" src={user_img} alt="User" />
                                 </a>
                             </div>
-                            {/* ------------------------------------------------------------------------------- */}
-                            <button className="button red-button header__make-add-btn" onClick={openPersonalArea}>
+                            <button className="button red-button header__make-add-btn" onClick={handleAdClick}>
                                 Post ad
                             </button>
-                            {/* ------------------------------------------------------------------------------- */}
                         </div>
                     </div>
                     <div className="header__bottom-block" style={{ display: isMenuOpen ? 'none' : 'flex' }}>
@@ -89,9 +97,7 @@ function Header() {
             >
                 <Menu message={data?.items} />
             </CSSTransition>
-            {/* ------------------------------------------------------------------------------- */}
-            {isPersonalAreaOpen && <PersonalArea />}
-            {/* ------------------------------------------------------------------------------- */}
+            <PersonalArea isShow={isPersonalAreaOpen}/>
         </header>
     );
 }

@@ -1,10 +1,10 @@
-import '@styles/PersonalArea.scss';
-import useAuth from '@scripts/useAuth';
+import '@styles/authorization/PersonalArea.scss';
+import useAuth from '@scripts/custom_hooks/useAuth';
 import { useState, useRef, useEffect } from 'react';
 import exit_img from '@images/auth/cross.svg';
-import Register from '@components/Register';
-import Login from '@components/Login';
-import ForgetPass from '@components/ForgetPass';
+import Register from '@components/authorization/Register';
+import Login from '@components/authorization/Login';
+import ForgetPass from '@components/authorization/ForgetPass';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 

@@ -1,0 +1,35 @@
+.dropdown-profile-menu {
+    &_props {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 3;
+        width: fit-content;
+        background: var(--white);
+        box-shadow: 0 0 4px var(--base-box-shadow);
+        margin-top: 80px;
+        margin-right: 80px;
+        border-radius: 12px;
+        padding: 17px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    &__element {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        white-space: nowrap;
+        &:hover {
+            .dropdown-profile-menu__svg-stroke {
+                stroke: var(--green);
+            }
+            .dropdown-profile-menu__svg-fill {
+                fill: var(--green);
+            }
+            .dropdown-profile-menu__text {
+                color: var(--green);
+            }
+        }
+    }
+}

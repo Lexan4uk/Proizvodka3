@@ -1,4 +1,4 @@
-import '@styles/PersonalArea.scss';
+import '@styles/authorization/PersonalArea.scss';
 import { postRegistration } from '@api/register';
 import { useState } from 'react';
 

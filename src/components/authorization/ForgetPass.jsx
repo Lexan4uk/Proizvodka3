@@ -1,4 +1,4 @@
-import '@styles/PersonalArea.scss';
+import '@styles/authorization/PersonalArea.scss';
 import { useState } from 'react';
 import { postRemind } from '@api/forgetPassword';
 

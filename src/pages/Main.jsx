@@ -1,18 +1,20 @@
-import '@styles/Main.scss';
+import '@styles/pages/Main.scss';
 import Header from '@components/Header';
 import { apiTags, getAdverts } from '@api/adverts';
 import useSWR from 'swr';
-import AdvertThumb from '@components/AdvertThumb';
+import AdvertThumb from '@components/cards/AdvertThumb';
+import Footer from '@components/Footer';
 
 
 
 function Main() {
   const { data, error, isLoading } = useSWR(apiTags.adverts_with_pages, () => getAdverts());
+
   return (
       <>
         <Header />
         <section className="main">
-          <div className="main__content-holder block-normalizer">
+        <div className="main__content-holder block-normalizer">
             <h1 className='main__article weight-xl font-xxl'>Recommendations</h1>
             <div className="main__content">
               <div className="main__goods">
@@ -34,11 +36,10 @@ function Main() {
                 здесь могла быть ваша реклама
               </aside>
             </div>
-
           </div>
         </section>
-
         <div id="modal-root"></div>
+        <Footer/>
       </>
   );
 }

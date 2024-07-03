@@ -1,8 +1,8 @@
-import '@styles/PersonalArea.scss';
+import '@styles/authorization/PersonalArea.scss';
 import { getToken } from '@api/token';
 import { login } from '@api/login';
 import { useState } from 'react';
-import useAuth from '@scripts/useAuth';
+import useAuth from '@scripts/custom_hooks/useAuth';
 
 
 function Login({ onSwitch }) {

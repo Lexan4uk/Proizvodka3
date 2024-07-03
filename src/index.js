@@ -1,6 +1,7 @@
-import React, { Children } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Main from '@pages/Main';
+import Jobs from '@pages/Jobs';
 
 import reportWebVitals from './reportWebVitals';
 import '@globalStyles/fonts.scss';
@@ -8,11 +9,14 @@ import '@globalStyles/globals.scss';
 import '@globalStyles/mixins.scss';
 import '@globalStyles/normalize.scss';
 import '@globalStyles/variables.scss';
-import {RecoilRoot} from 'recoil';
-import useAuth from '@scripts/useAuth';
+import { RecoilRoot } from 'recoil';
+import useAuth from '@scripts/custom_hooks/useAuth';
 import { useEffect } from 'react';
-import { isUserFetchingState } from '@scripts/authState';
+import { isUserFetchingState } from '@scripts/atoms/authState';
 import { useRecoilState } from 'recoil';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+
 
 
 
@@ -42,12 +46,16 @@ root.render(
   <React.StrictMode>
     <RecoilRoot>
       <App>
-        <Main />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Main/>} />
+            <Route path="/jobs" element={<Jobs/>} />
+          </Routes>
+        </Router>
       </App>
     </RecoilRoot>
   </React.StrictMode>
 );
-//ПОМЕНЯТЬ isAuthorised если авторизован, сохранить в данных данные аккаунта, опрокинуть вызов на кнопки
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

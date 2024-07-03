@@ -1,7 +1,6 @@
 import { useRecoilState } from 'recoil';
-import { useEffect } from 'react';
-import { isPersonalAreaOpenState } from '@scripts/paState';
-import { isAuthorisedState, isUserFetchingState } from '@scripts/authState';
+import { isPersonalAreaOpenState } from '@scripts/atoms/paState';
+import { isAuthorisedState } from '@scripts/atoms/authState';
 import { login } from '@api/login';
 
 

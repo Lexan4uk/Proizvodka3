@@ -1,4 +1,4 @@
-import '@styles/Menu.scss';
+import '@styles/header_component/Menu.scss';
 import React, { useState, useEffect } from 'react';
 
 

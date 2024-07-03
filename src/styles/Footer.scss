@@ -1,0 +1,65 @@
+.footer {
+    &_bg {
+        background: var(--gray-bg);
+    }
+    &__content-holder {
+        display: grid !important;
+        grid-template-columns: 2fr 1.5fr;
+        column-gap: 20px;
+        row-gap: 40px;
+        padding-top: 40px;
+        padding-bottom: 16px;
+    }
+    &__information {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        row-gap: 8px;
+    }
+    &__info-article {
+        margin-bottom: 4px;
+    }
+    &__info-link {
+        &:hover {
+            color: var(--green);
+            
+        }
+    }
+    &__socials {
+        display: flex;
+        gap: 12px;
+        grid-row: 2;
+    }
+    &__social {
+        padding: 6px;
+        background: var(--white);
+        border-radius: 8px;
+    }
+    &__mobapp-add {
+        grid-row: 1 / span 2;
+        grid-template-columns: 2;
+        background: var(--white);
+        padding: 30px;
+        border: 1px solid var(--gray-border);
+        border-radius: 16px;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__mobapp-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px
+    }
+    &__mobapp-links-holder {
+        display: flex;
+        gap: 12px;
+        margin-top: 12px;
+    }
+    &__bottom-text-holder {
+        display: flex;
+        justify-content: space-between;
+        grid-row: 3;
+        grid-column: 1 / span 2;
+    }
+}

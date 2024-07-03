@@ -1,6 +1,6 @@
-import '@styles/AdvertThumb.scss';
+import '@styles/cards/AdvertThumb.scss';
 import { useState } from 'react';
-import useAuth from '@scripts/useAuth';
+import useAuth from '@scripts/custom_hooks/useAuth';
 
 
 function AdvertThumb(data) {

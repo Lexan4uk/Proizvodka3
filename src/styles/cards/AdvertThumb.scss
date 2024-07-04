@@ -14,7 +14,7 @@
         top: 0;
         right: 0;
         margin: 8px;
-        padding: 5px 7px;
+        padding: 5px ;
         border-radius: 100px;
         background: var(--white);
         opacity: 0.8;
@@ -22,6 +22,7 @@
         border: none;
         &:hover {
             opacity: 1;
+            --iconcolor: var(--green)
         }
         &_active {
             opacity: 1;
@@ -29,11 +30,6 @@
             .advert-thumb__heart-img {
                 fill: var(--white) !important;
             }
-        }
-    }
-    &__heart-img {
-        &:hover {
-            fill: var(--green);
         }
     }
 

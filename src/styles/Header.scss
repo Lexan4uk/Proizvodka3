@@ -86,6 +86,7 @@
 
     &__lang-button {
         display: flex;
+        align-items: center;
         gap: 8px;
         padding-right: 16px !important;
         border-right: 2px solid #D0D0D0 !important;
@@ -93,18 +94,13 @@
 
     &__minimenu-item {
         height: fit-content;
+        &:hover {
+            --iconcolor: var(--green) !important
+        }
     }
 
     &__minimenu-button {
         padding: 0 !important;
-    }
-
-    &__minimenu-svg {
-        &:hover {
-            .header__minimenu-svg_hover {
-                stroke: var(--green);
-            }
-        }
     }
 
 

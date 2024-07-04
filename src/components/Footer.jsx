@@ -1,8 +1,7 @@
 import '@styles/Footer.scss';
 
-import facebook_img from '@images/footer/facebook-icon.svg';
-import inst_img from '@images/footer/inst-icon.svg';
-import twitter_img from '@images/footer/twitter-icon.svg';
+import getSvg from '@images/svg'
+
 import appstore_img from '@images/footer/App_Store.png';
 import googlestore_img from '@images/footer/Google_Play_Store.png';
 import phone_img from '@images/footer/phone-img.png';
@@ -12,6 +11,11 @@ import phone_img from '@images/footer/phone-img.png';
 
 
 function Footer() {
+    const {
+        facebook,
+        instagram,
+        twitter
+    } = getSvg()
     return (
         <footer className="footer footer_bg">
             <div className="footer__content-holder block-normalizer">
@@ -29,13 +33,13 @@ function Footer() {
                 </div>
                 <div className="footer__socials">
                     <a className="footer__social-link" href="https://www.consultant.ru/document/cons_doc_LAW_10699/c10532ab76df5c84c18ee550a79b1fc8cb8449b2/">
-                        <img className="footer__social" src={facebook_img} alt="facebook icon" />
+                        {facebook("var(--gray-icon")}
                     </a>
                     <a className="footer__social-link" href="https://www.consultant.ru/document/cons_doc_LAW_10699/c10532ab76df5c84c18ee550a79b1fc8cb8449b2/">
-                        <img className="footer__social" src={inst_img} alt="instagram icon" />
+                        {instagram("var(--gray-icon")}
                     </a>
                     <a className="footer__social-link" href="https://www.consultant.ru/document/cons_doc_LAW_10699/c10532ab76df5c84c18ee550a79b1fc8cb8449b2/">
-                        <img className="footer__social" src={twitter_img} alt="twitter icon" />
+                        {twitter("var(--gray-icon", "var(--gray-icon")}
                     </a>
                 </div>
                 <aside className="footer__mobapp-add">

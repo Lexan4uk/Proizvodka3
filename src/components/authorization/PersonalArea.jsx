@@ -1,12 +1,13 @@
 import '@styles/authorization/PersonalArea.scss';
 import useAuth from '@scripts/custom_hooks/useAuth';
 import { useState, useRef, useEffect } from 'react';
-import exit_img from '@images/auth/cross.svg';
 import Register from '@components/authorization/Register';
 import Login from '@components/authorization/Login';
 import ForgetPass from '@components/authorization/ForgetPass';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
+import getSvg from '@images/svg'
+
 
 
 
@@ -15,6 +16,10 @@ function PersonalArea({isShow}) {
         isPersonalAreaOpen,
         closePersonalArea,
     } = useAuth();
+
+    const {
+        cross
+    } = getSvg();
 
     const ref = useRef()
 
@@ -51,7 +56,7 @@ function PersonalArea({isShow}) {
                             {renderComponent()}
                             <span className="personal-area__tos text-gray font-s">By signing up I agree to the Terms and Conditions and Privacy Policy</span>
                             <button className="personal-area__close-btn button text-black" onClick={closePersonalArea}>
-                                <img src={exit_img} alt="Cross" />
+                                {cross("var(--white)", 42, 43)}
                             </button>
                         </div>
                     </form>

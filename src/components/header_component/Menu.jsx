@@ -42,10 +42,11 @@ function Menu(data) {
                             {hoveredChildren.length > 0 ? (
                                 hoveredChildren.map(child => (
                                     <div className="menu__right-content-block">
-                                        <a key={child.id} href={child.tech_name ? child.tech_name : "/"} className="menu__right-link menu__right-article-link weight-xl">{child.name}</a>
+                                        <a key={child.id} href={`/filter/${child.id}`} className="menu__right-link menu__right-article-link weight-xl">{child.name}</a>
                                         {child.children ? child.children.map(subChild => (
-                                            <a key={subChild.id} href={subChild.tech_name ? subChild.tech_name : "/"} className="menu__right-link menu__right-base-link">
+                                            <a key={subChild.id} href={`/filter/${subChild.id}`} className="menu__right-link menu__right-base-link">
                                                 {subChild.name}
+
                                             </a>
                                         )) : (null)
                                         }

@@ -14,6 +14,7 @@ function Header() {
     const { data, error, isLoading } = useSWR(apiTags.advert_categories, getCategories);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDropdownProfileMenuOpen, setDropdownProfileMenuOpen] = useState(false)
+    
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);

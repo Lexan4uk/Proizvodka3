@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Main from '@pages/Main';
-import Jobs from '@pages/Jobs';
 
 import reportWebVitals from './reportWebVitals';
 import '@globalStyles/fonts.scss';
@@ -15,6 +14,7 @@ import { useEffect } from 'react';
 import { isUserFetchingState } from '@scripts/atoms/authState';
 import { useRecoilState } from 'recoil';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import FilterPage from '@pages/FilterPage';
 
 
 
@@ -49,7 +49,7 @@ root.render(
         <Router>
           <Routes>
             <Route path="/" element={<Main/>} />
-            <Route path="/jobs" element={<Jobs/>} />
+            <Route path='/filter/:id' element={<FilterPage/>}></Route>
           </Routes>
         </Router>
       </App>

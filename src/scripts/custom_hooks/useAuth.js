@@ -2,12 +2,14 @@ import { useRecoilState } from 'recoil';
 import { isPersonalAreaOpenState } from '@scripts/atoms/paState';
 import { isAuthorisedState } from '@scripts/atoms/authState';
 import { login } from '@api/login';
+import {accDataAtom } from '@scripts/atoms/accDataAtom'
+import { set } from 'react-hook-form';
 
 
 function useAuth() {
   const [isPersonalAreaOpen, setIsPersonalAreaOpen] = useRecoilState(isPersonalAreaOpenState);
   const [isAuthorised, setIsAuthorised] = useRecoilState(isAuthorisedState);
-
+  const [accData, setAccData] = useRecoilState(accDataAtom)
 
   const openPersonalArea = () => {
     setIsPersonalAreaOpen(true);
@@ -22,6 +24,7 @@ function useAuth() {
       if (!isAuthorised && token) {
         const responseLogin = await login();
         setIsAuthorised(true)
+        setAccData(responseLogin.item)
       }
   }
 
@@ -32,7 +35,7 @@ function useAuth() {
     openPersonalArea,
     closePersonalArea,
     initUser,
-    
+    accData
   };
 }
 

@@ -27,7 +27,7 @@ function DropdownProfileMenu({ isShow }) {
 
     return isShow ? createPortal(
         <div className="dropdown-profile-menu dropdown-profile-menu_props">
-            <a className="dropdown-profile-menu__element" href="/">
+            <a className="dropdown-profile-menu__element" href="/profile">
                 {person()}
                 <span className="dropdown-profile-menu__text">My profile</span>
             </a>

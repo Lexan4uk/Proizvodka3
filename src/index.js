@@ -15,6 +15,7 @@ import { isUserFetchingState } from '@scripts/atoms/authState';
 import { useRecoilState } from 'recoil';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import FilterPage from '@pages/FilterPage';
+import Profile from '@pages/Profile';
 
 
 
@@ -50,6 +51,7 @@ root.render(
           <Routes>
             <Route path="/" element={<Main/>} />
             <Route path='/filter/:id' element={<FilterPage/>}></Route>
+            <Route path="/profile" element={<Profile/>} />
           </Routes>
         </Router>
       </App>

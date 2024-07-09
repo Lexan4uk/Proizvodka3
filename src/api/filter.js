@@ -4,7 +4,7 @@ export const apiTags = {
     deal_item: "filter_deal_item_list",
 };
 export const getTag = (id) => {
-    const deal_item = ["1", "4", "6"]
+    const deal_item = ["1", "4", "6", "7", "10"]
     if (deal_item.includes(id))
         return apiTags.deal_item
 }

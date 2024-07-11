@@ -21,6 +21,7 @@
         align-items: center;
         gap: 12px;
         white-space: nowrap;
+        width: 100%;
         &:hover {
             --iconcolor: var(--green);
             .dropdown-profile-menu__text {

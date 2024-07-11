@@ -1,0 +1,122 @@
+.profile {
+    &__content {
+        display: flex;
+        padding-top: 70px;
+        padding-bottom: 150px;
+        gap: 110px;
+    }
+    &__side-block {
+        flex: 1;
+    }
+    &__user-infoblock {
+        gap: 16px;
+        align-items: center;
+        padding: 10px 20px;
+    }
+    &__user-img-holder {
+        height: 50px;
+        width: 50px;
+        border-radius: 100px;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    &__user-img {
+        height: 100%;
+        &_def {
+            background: var(--gray-bg);
+        }
+    }
+    &__user-info {
+        padding: 16px;
+    }
+    &__user-sideblock-holder {
+        position: relative;
+        .dropdown-profile-menu_props {
+            position: relative;
+            margin: 0;
+            width: 100%;
+            box-shadow: none;
+            background: var(--gray-bg);
+        }
+    }
+    &__main-block {
+        flex: 3;
+        gap: 40px;
+    }
+    &__action {
+        padding: 20px;
+        border-radius: 12px;
+        align-items: center;
+    }
+    &__action-top-btn {
+        background: none;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        padding: 0;
+        position: relative;
+        width: fit-content;
+    }
+    &__action-img-holder {
+        height: 100px;
+        width: 100px;
+        border-radius: 100px;
+        overflow: hidden;
+    }
+    &__action-svg-holder {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: var(--green);
+        padding: 8px;
+        border-radius: 100px;
+    }
+    &__action-bottom {
+        max-width: 192px;
+    }
+    &__action-article {
+        margin-bottom: 4px;
+    }
+    &__form-place {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 20px;
+        column-gap: 30px;
+    }
+    &__form-input-text {
+        margin-bottom: 8px;
+    }
+    &__form-input-holder {
+        padding: 12px;
+        position: relative;
+        &_outline {
+            outline: 2px solid var(--gray-border);
+        }
+        &_non-active {
+            background: var(--gray-bg);
+        }
+    }
+    &__form-input {
+        appearance: none;
+        background: none;
+        width: 100%;
+        padding-right: 20px;
+        &:focus {
+            outline: none;
+        }
+        &_non-active {
+            pointer-events: none;
+        }
+    }
+    &__form-input-pencil {
+        position: absolute;
+        right: 0;
+        top:0;
+        margin: 8px;
+    }
+    
+
+}

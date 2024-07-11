@@ -1,11 +1,13 @@
 import '@styles/header_component/DropdownProfileMenu.scss';
 import { createPortal } from 'react-dom';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import getSvg from '@images/svg'
 
-function DropdownProfileMenu({ isShow }) {
+
+function DropdownProfileMenu({ isShow, block = "modal-root-dropdown"}) {
     const ref = useRef();
+    const [mounted, setMounted] = useState(false);
     const {
         person,
         home,
@@ -18,14 +20,19 @@ function DropdownProfileMenu({ isShow }) {
     } = getSvg()
 
     useEffect(() => {
-        const modalRoot = document.getElementById('modal-root-dropdown');
+        console.log(block)
+        const modalRoot = document.getElementById(block);
         if (modalRoot) {
             ref.current = modalRoot;
+            setMounted(true);
         }
     }, []);
+    if (!mounted) {
+        return null;
+    }
 
 
-    return isShow ? createPortal(
+    return isShow && ref.current ? createPortal(
         <div className="dropdown-profile-menu dropdown-profile-menu_props">
             <a className="dropdown-profile-menu__element" href="/profile">
                 {person()}

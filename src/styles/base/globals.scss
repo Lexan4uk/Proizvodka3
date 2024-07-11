@@ -94,6 +94,23 @@ body {
 .font-xxl {
   font-size: 32px;
 }
+.f-column {
+  display: flex;
+  flex-direction: column;
+}
+.f-row {
+  display: flex;
+}
+.gap-20 {
+  gap: 20px;
+}
+.gap-16 {
+  gap: 16px;
+}
+.gray-border {
+  border-radius: 12px;
+  border: 1px solid var(--gray-border);
+}
 $md: 480;
 $lg: 786;
 $xl: 1350;

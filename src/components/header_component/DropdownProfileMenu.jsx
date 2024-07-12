@@ -20,7 +20,6 @@ function DropdownProfileMenu({ isShow, block = "modal-root-dropdown"}) {
     } = getSvg()
 
     useEffect(() => {
-        console.log(block)
         const modalRoot = document.getElementById(block);
         if (modalRoot) {
             ref.current = modalRoot;

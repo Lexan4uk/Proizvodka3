@@ -28,7 +28,7 @@ function Menu(data) {
                 <div className="menu__block block-normalizer">
                     <div className="menu__left-menu">
                         {data.message.map(item => (
-                            <a class={`menu__left-menu-link ${item.id === hoveredElement.id ? "menu__left-menu-link_active" : ""}`} key={item.id} href={'/' + item.tech_name} onMouseEnter={(e) => handleMouseEnter(item, e.target)}>{item.name}</a>
+                            <a className={`menu__left-menu-link ${item.id === hoveredElement.id ? "menu__left-menu-link_active" : ""}`} key={item.id} href={'/' + item.tech_name} onMouseEnter={(e) => handleMouseEnter(item, e.target)}>{item.name}</a>
                         ))}
                     </div>
                     <div className="menu__right">

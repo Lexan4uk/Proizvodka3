@@ -5,8 +5,11 @@ import { useEffect, useState } from 'react';
 import useAuth from '@scripts/custom_hooks/useAuth';
 import DropdownProfileMenu from '@components/header_component/DropdownProfileMenu';
 import getSvg from '@images/svg'
+import useSWR from 'swr';
+import simpleGet from '@api/simpleGet';
 
-function Input({type = "text", data="", active=true}) {
+
+function Input({ type = "text", data = "", active = true }) {
   const {
     pencil
   } = getSvg()
@@ -20,14 +23,26 @@ function Input({type = "text", data="", active=true}) {
   )
 }
 
+
+
+
+
 function Profile() {
   const {
     accData
   } = useAuth()
+  const [selectedCountry, setSelectedCountry] = useState()
+  const { data: countryList } = useSWR("country/list", simpleGet);
+  const handleSelectCountry = (event) => {
+    setSelectedCountry(event.target.value);
+  };
+  const { data: cityList } = useSWR(selectedCountry ? `country/${selectedCountry}/districts` : null, simpleGet);
+
+  
   useEffect(() => {
-    console.log(accData)
-  }, [])
-  const {
+    setSelectedCountry(accData.country ? accData.country.id : undefined)
+  }, [accData])
+  const { 
     photo,
     pencil
   } = getSvg()
@@ -90,16 +105,38 @@ function Profile() {
                 </div>
                 <div className="profile__form-input-block f-column">
                   <span className="profile__form-input-text gray-text">Last Name</span>
-                  <Input data={accData.last_name && accData.last_name}/>
+                  <Input data={accData.last_name && accData.last_name} />
                 </div>
                 <div className="profile__form-input-block f-column">
                   <span className="profile__form-input-text gray-text">Phone</span>
-                  <Input data={accData.phone && accData.phone} type={"number"}/>
+                  <Input data={accData.phone && accData.phone} type={"number"} />
                 </div>
                 <div className="profile__form-input-block f-column">
                   <span className="profile__form-input-text gray-text">Email</span>
-                  <Input data={accData.email && accData.email} type={"email"} active={false}/>
+                  <Input data={accData.email && accData.email} type={"email"} active={false} />
                 </div>
+                {countryList &&
+                  <div className="profile__form-input-block f-column">
+                    <span className="profile__form-input-text gray-text">Country</span>
+                    <select className="profile__filter-input" onChange={handleSelectCountry}>
+                      <option className="profile__filter-option" value="" disabled hidden>rfdfd</option>
+                      {countryList.items.map((country) => {
+                        return <option className="profile__filter-option" selected={accData.country?.id  == country?.id ? true : false} key={country.id} value={country.id}>{country.name}</option>;
+                      })}
+                    </select>
+                  </div>
+                }
+                <div className="profile__form-input-block f-column">
+                    <span className="profile__form-input-text gray-text">City</span>
+                    {selectedCountry  &&
+                    <select className="profile__filter-input" value={accData.city ? accData.city.id : ""}>
+                      <option className="profile__filter-option" value="" disabled hidden></option>
+                      {cityList && cityList?.items.map((city) => {
+                        return <option className="profile__filter-option" key={city.id} value={city.id}>{city.name}</option>;
+                      })}
+                    </select>
+                    }
+                  </div>
               </div>
             </section>
           </form>

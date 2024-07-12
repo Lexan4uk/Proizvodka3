@@ -117,6 +117,21 @@
         top:0;
         margin: 8px;
     }
+    &__filter-input {
+        appearance: none; 
+        border: 1px solid var(--gray-border);
+        border-radius: 12px;
+        padding: 10px;
+
+        &:focus {
+            outline: 2px solid var(--gray-border);
+        }
+        &_disabled {
+            background: var(--gray-bg);
+            pointer-events: none;
+        }
+    }
+
     
 
 }

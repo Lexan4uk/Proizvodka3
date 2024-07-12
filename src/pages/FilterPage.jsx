@@ -19,7 +19,6 @@ function FilterPage() {
     const methods = useForm();
     const { handleSubmit, watch, formState: { errors } } = methods
     const onSubmit = async qdata => setFilterResult(await filteredItems(apiTags.paginator_filter, id, qdata));
-    console.log(filterResult)
 
 
     return (
